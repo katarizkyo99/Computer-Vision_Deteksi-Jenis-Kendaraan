@@ -85,16 +85,3 @@ uploads/                 # runtime: uploaded images (gitignored)
 results/                 # runtime: annotated result images (gitignored)
 runs/                    # run outputs (gitignored)
 ```
-
-## Security & best practices
-- Do not hard-code API keys or credentials in source files. Use environment variables or a secrets manager.
-- This project runs Flask with debug=True in development; do not enable debug mode in production.
-- Add a requirements.txt (provided) and pin versions for reproducibility in production deployments.
-
-## Suggested improvements
-- Move model and inference logic to a separate module to improve testability.
-- Add a short test suite and CI workflow to verify basic app behavior.
-- Provide a Dockerfile and production-ready run instructions (Gunicorn + workers) for deployment.
-
-## License
-Add a license file to this repository (e.g., MIT) if you intend to share or re-use this code publicly. 
