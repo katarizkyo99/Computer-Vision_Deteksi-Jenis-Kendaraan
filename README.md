@@ -106,51 +106,12 @@ python main.py
 
 Open http://127.0.0.1:5000/ in your browser, upload an image, and wait for the annotated result.
 
-### Endpoints (as implemented)
-
-| Method | Endpoint | Description |
-| ------ | -------- | ----------- |
-| GET | / | Upload form (templates/index.html) |
-| POST | / | Upload image file (multipart/form-data, field name `file`); returns index.html with result filename and labels |
-| GET | /uploads/<filename> | Returns the annotated image from results/ (note: route is named '/uploads' but serves from results/) |
 
 ## Usage
 
 - Use the web form to upload a JPEG/PNG image.
 - After upload, the server runs YOLO inference, writes an annotated copy to results/, and displays it on the page along with detected labels.
 
-## Database
-
-- No database is used.
-
-## Docker
-
-- No Dockerfile or Docker Compose present in the repository.
-
-## Troubleshooting
-
-- FileNotFoundError for model: ensure `yolov8x.pt` exists in repository root or update main.py to the correct path.
-- Roboflow errors: main.py contains a Roboflow download call which requires a valid API key; if you don't intend to use Roboflow, comment out that block.
-- CV2 / OpenCV errors on some systems: if GUI-related errors occur, use the headless package already listed (opencv-python-headless).
-- Dependency version conflicts: use a fresh virtualenv and pip install -r requirements.txt.
-
-## Security Notes
-
-- main.py previously contained a hardcoded Roboflow API key and calls Roboflow downloading code at startup. This is a credential exposure risk. Remove hardcoded keys and load sensitive values from environment variables or a .env file (never commit secrets).
-- The application runs the Flask development server with debug=True; do not use debug mode in production.
-
-## Development
-
-- To change detected classes or class filtering, check SELECTED_CLASS_NAMES in main.py.
-- To change model path, update the YOLO(...) argument in main.py or refactor main.py to read YOLO_WEIGHTS from environment.
-
-## Contributing
-
-- This is a small personal project. If you want to contribute, open an issue or submit a PR; follow the code style already present (simple Python scripts + HTML).
-
-## License
-
-- No LICENSE file found in repository. Do not assume a license; add one if you intend to make the project public under specific terms.
 
 ## Author
 
